@@ -1,5 +1,5 @@
 import Notification from 'components/Notification/Notification';
-import { Container, Message, SubTitleText, Title, Wrap } from 'components/StyledComponents/CommonElemens.styled';
+import { Container, SubTitleText, Title, Wrap } from 'components/StyledComponents/CommonElemens.styled';
 import { FormLink } from 'components/StyledComponents/Formik.styled';
 import React from 'react'
 import { toast } from 'react-hot-toast';
@@ -8,8 +8,7 @@ import { selectProfile } from 'redux/auth/selectors';
 import { logOutThunk } from 'redux/auth/thunks';
 
 const Profile = () => {
-// const navigate = useNavigate();
-// const isAuth = useSelector(selectToken);
+
 const profile = useSelector(selectProfile);
 const dispatch = useDispatch();
 

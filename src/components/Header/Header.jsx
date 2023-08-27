@@ -5,7 +5,6 @@ import {
   HeaderNavLink,
   HeaderNavWrap,
   HeaderWrap,
-  User,
 } from './Header.styled';
 import { selectProfile, selectToken } from 'redux/auth/selectors';
 import { useDispatch, useSelector } from 'react-redux';
