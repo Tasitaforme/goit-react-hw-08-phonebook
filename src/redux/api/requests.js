@@ -86,10 +86,9 @@ export const logOut = async () => {
 };
 
 export const refresh = async () => {
-  const token = localStorage.getItem('token');
-  console.log(JSON.parse(token));
-  token && setToken(JSON.parse(token));
+  const token = JSON.parse(localStorage.getItem('token'));
+  token && setToken(token);
   const { data } = await instanceForAuth('users/current');
-  setTokenToLocal(data.token);
+  data.token = token;
   return data;
 };

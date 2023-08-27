@@ -7,18 +7,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { selectToken } from 'redux/auth/selectors';
 import { refreshThunk } from 'redux/auth/thunks';
+import { fetchContacts } from 'redux/operationsThunks';
 
 function SharedLayout() {
   const isAuth = useSelector(selectToken);
   const dispatch = useDispatch();
-  // const token = localStorage.getItem('token');
+  const localToken = localStorage.getItem('token');
   
   useEffect(() => {
     const refresh = () => {
-      !isAuth && dispatch(refreshThunk());
-    };
+      !isAuth && localToken && dispatch(refreshThunk());
+    }
     refresh();
-  }, [dispatch, isAuth]);
+    isAuth && dispatch(fetchContacts());
+  }, [dispatch, isAuth, localToken]);
 
   return (
     <>

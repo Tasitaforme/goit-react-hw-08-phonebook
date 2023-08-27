@@ -20,9 +20,9 @@ const Home = () => {
         👍 The application will help you quickly find the right contact and keep
         your phone book in order.
         <br />
-        <br />
-        ☝ If you are not authorized, you will not be able to use App
+        <br />☝ If you are not authorized, you will not be able to use App
       </SubTitleText>
+      <Title>Get started:</Title>
       <Message>Don't have an account?</Message>
       <FormLink onClick={() => navigate('/register', { replace: true })}>
         👉 Sign up

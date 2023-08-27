@@ -4,8 +4,14 @@ import { selectToken } from 'redux/auth/selectors';
 
 const PrivateGuard = ({ component: Component, redirectTo }) => {
   const isAuth = useSelector(selectToken);
-const location = useLocation();
-  return isAuth ? <Component /> : <Navigate to={redirectTo} state={location} />;
+  const localToken = localStorage.getItem('token');
+  const location = useLocation();
+  
+  return isAuth || localToken ? (
+    <Component />
+  ) : (
+    <Navigate to={redirectTo} state={location} />
+  );
 };
 
 export default PrivateGuard;

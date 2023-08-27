@@ -41,11 +41,7 @@ const authSlice = createSlice({
       .addCase(logOutThunk.fulfilled, () => initialState)
       .addCase(logOutThunk.rejected, handleRejected)
       .addCase(refreshThunk.pending, handlePending)
-      .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-        state.user = payload;
-        state.profile = payload.user;
-        state.isLoading = false;
-      })
+      .addCase(refreshThunk.fulfilled, handleFulfilledSignUp)
       .addCase(refreshThunk.rejected, () => initialState);
       
   },
