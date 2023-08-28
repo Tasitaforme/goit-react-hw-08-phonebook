@@ -1,7 +1,7 @@
-import { ContactForm } from '../../ContactForm/ContactForm';
-import Filter from '../../Filter/Filter';
-import ContactList from '../../ContactList/ContactList';
-import Notification from '../../Notification/Notification';
+import { ContactForm } from 'components/ContactForm/ContactForm';
+import Filter from 'components/Filter/Filter';
+import ContactList from 'components/ContactList/ContactList';
+import Notification from 'components/Notification/Notification';
 import {
   Container,
   Title,
@@ -11,7 +11,7 @@ import {
 import { useSelector } from 'react-redux';
 import { selectContactsInfo } from 'redux/selectors';
 import { Toaster } from 'react-hot-toast';
-import { Loader } from '../../Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 const Contacts = () => {
   const { items: contacts, isLoading, error } = useSelector(selectContactsInfo);

@@ -1,4 +1,4 @@
-<!-- ![preview-hw](/preview.jpg)
+<!-- ![preview-hw](/preview.jpg)-->
 
 ## Критерії приймання ДЗ
 
@@ -14,35 +14,32 @@
 
 ## Завдання «Книга контактів» (Redux Toolkit, createAsyncThunk)
 
-Виконай рефакторинг коду застосунку з попереднього ДЗ-6
-[«Книга контактів»](https://github.com/Tasitaforme/goit-react-hw-06-phonebook).
-Видали код, що відповідає за зберігання та читання контактів з локального
-сховища, та додай взаємодію з бекендом для зберігання контактів.
+Додай до коду застосунку з попереднього ДЗ-7
+[«Книга контактів»](https://github.com/Tasitaforme/goit-react-hw-07-phonebook)можливість реєстрації, логіна та оновлення користувача, а також роботу з приватною колекцією контактів.
 
 ### Бекенд
 
-Створи свій персональний бекенд для розробки за допомогою UI-сервісу
-[**mockapi.io.**](https://mockapi.io/) Зареєструйся використовуючи свій
-обліковий запис GitHub. Створи ресурс `contacts` щоб отримати endpoint
-`/contacts`. Використай конструктор ресурсу та опиши об'єкт контакту як на
-ілюстрації.
+Для цього завдання є готовий бекенд. Ознайомся з [**документацією**](https://connections-api.herokuapp.com/docs/). Він підтримує всі необхідні операції з колекцією контактів, а також реєстрацію, логін та оновлення користувача за допомогою JWT. Використовуй його замість твого бекенда створеного через сервіс [**mockapi.io.**](https://mockapi.io/) .
 
-<p align="center">
-<img src="./api.png" alt="Mockapi api" width="450" style="display:block; margin-left:auto; margin-right:auto; margin-bottom:0; margin-top:0;" />
-</p>
+### Маршрутизація
 
-### Форма стану
+Додай маршрутизацію з бібліотекою React Router. У програмі має бути кілька сторінок:
 
-Додай у стан Redux обробку індикатора завантаження та помилки. Для цього зміни
-форму стану.
+`/register` - публічний маршрут реєстрації нового користувача з формою
+`/login` - публічний маршрут логіна існуючого користувача з формою
+`/contacts` - приватний маршрут для роботи зі списком контактів користувача
 
-```js
-  contacts: {
-    items: [],
-    isLoading: false,
-    error: null
-  },
-  filter: ""
+Додай компонент навігації `Navigation` з посиланнями для переходу по маршрутах.
+
+### Меню користувача
+
+Створи компонент `UserMenu`, що відображає пошту користувача і кнопку виходу з облікового запису. Ось як може виглядати його розмітка.
+
+```html
+<div>
+  <p>mango@mail.com</p>
+  <button>Logout</button>
+</div>
 ```
 
 ### Операції
@@ -53,14 +50,8 @@
 actions та зміну даних у стані Redux зроби за допомогою
 [`createSlice`](https://redux-toolkit.js.org/api/createSlice).
 
-**Оголоси наступні операції:**
-
-- `fetchContacts` - одержання масиву контактів (метод GET) запитом. Базовий тип
-  екшену `"contacts/fetchAll"`.
-- `addContact` - додавання контакту (метод POST). Базовий тип екшену
-  `"contacts/addContact"`.
-- `deleteContact` - видалення контакту (метод DELETE). Базовий тип екшену
-  `"contacts/deleteContact"`. -->
+### Стилізація
+Це фінальна версія програми, тому попрацюй над оформленням інтерфейсу. Можна використовувати бібліотеку стилізації або компонентів, наприклад [**Chakra UI**](https://chakra-ui.com/) або [**Material UI**](https://mui.com/).
 
 # Бібліотеки та імпорти
 
@@ -174,21 +165,16 @@ if (isLoginSuccess) {
 
 [Formik](https://formik.org/) — найпопулярніша у світі бібліотека форм із відкритим кодом для React і React Native.
 
-
 ### Хук useFormik в Formik
 [useFormik (documentation)](https://formik.org/docs/api/useFormik)
+
 [React Formik Tutorial with Yup (video)](https://youtu.be/7Ophfq0lEAY?si=ctnlSBJ0ejKcLGVj)
-
-```js
-
-```
 
 ### Бібліотека Yup в Formik
 **npm install yup**
 
-[Yup ](https://formik.org/docs/guides/validation#validationschema)
+[Yup ](https://formik.org/docs/guides/validation#validationschema) — 
 schema-builder для валідації значень. 
-
 
 ```js
 import * as Yup from 'yup';
@@ -299,6 +285,33 @@ const App = () => {
 };
 ```
 
+### Метод `.unwrap()` що робить dispatch() асинхронним 
+[Unwrapping Result Actions](https://redux-toolkit.js.org/api/createAsyncThunk#unwrapping-result-actions)
+
+```js
+const login = async (body) => {
+		try {
+			await dispatch(loginThunk(body)).unwrap()
+			console.log('Login successfully')
+		} catch (error) {
+			console.log(error)
+		}
+	}
+```
+
+```js
+const login = (body) => {
+		dispatch(loginThunk(body))
+			.unwrap()
+			.then(() => {
+				console.log('Login successfully')
+			})
+			.catch((error) => {
+				console.log(error)
+			})
+	}
+```
+
 ### Оголошення асинхронного генератора action за допомогою функції [createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk)
 
 `createAsyncThunk()` – це функція з бібліотеки Redux Toolkit, яка дозволяє створювати асинхронні action creators. 
@@ -350,6 +363,21 @@ export const getAllContacts = async () => {
 [**npm i react-loader-spinner**](https://mhnpd.github.io/react-loader-spinner/)
 
 `import { InfinitySpin } from 'react-loader-spinner';`
+
+## React Icons
+[**npm i react-icons**](https://react-icons.github.io/react-icons/)
+
+```jsx
+import { FaBeer } from "react-icons/fa";
+
+function Question() {
+  return (
+    <h3>
+      Lets go for a <FaBeer />?
+    </h3>
+  );
+}
+```
 
 ## Перевірка типів одержуваних пропсів
 

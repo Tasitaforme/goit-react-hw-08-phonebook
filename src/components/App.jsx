@@ -1,15 +1,16 @@
 import React, { lazy } from 'react';
-import Home from './pages/Home/Home';
+import Home from '../pages/Home/Home';
 import SharedLayout from './SharedLayout/SharedLayout';
 import { Route, Routes } from 'react-router-dom';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
-import Error from './pages/Error/Error';
+import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
+import Error from '../pages/Error/Error';
+//import Error from './pages/Error/Error';
 import PublicGuards from 'guards/PublicGuards';
 import PrivateGuard from 'guards/PrivateGuard';
-import Profile from './pages/Profile/Profile';
+import Profile from '../pages/Profile/Profile';
 
-const Contacts = lazy(() => import('./pages/Contacts/Contacts'));
+const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
 
 const App = () => {
   return (

@@ -41,7 +41,7 @@ export const refreshThunk = createAsyncThunk(
     try {
       return await refresh();
     } catch (error) {
-      return rejectWithValue('');
+      return rejectWithValue(error);
     }
   }
 );

@@ -7,7 +7,7 @@ import {
   FormikStyledField,
   FormikStyledForm,
   FormLink,
-} from '../../StyledComponents/Formik.styled';
+} from '../../components/StyledComponents/Formik.styled';
 import {
   Container,
   Message,
@@ -26,7 +26,7 @@ const Register = () => {
 
   const dispatch = useDispatch();
   
-// const isError = useSelector(selectError);
+
   const onSubmit = async (values, actions) => {
     try {
       await dispatch(signUpThunk(values)).unwrap();

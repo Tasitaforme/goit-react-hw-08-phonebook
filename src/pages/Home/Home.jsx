@@ -5,7 +5,7 @@ import {
   Title,
 } from 'components/StyledComponents/CommonElemens.styled';
 import { FormLink } from 'components/StyledComponents/Formik.styled';
-import React from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -20,7 +20,11 @@ const Home = () => {
         👍 The application will help you quickly find the right contact and keep
         your phone book in order.
         <br />
-        <br />☝ If you are not authorized, you will not be able to use App
+        <br />
+        😎 If you are not authorized, you will not be able to test App!
+        <br />
+        <br />
+        😉 Feel free to test it with a fake email!
       </SubTitleText>
       <Title>Get started:</Title>
       <Message>Don't have an account?</Message>
@@ -33,6 +37,6 @@ const Home = () => {
       </FormLink>
     </Container>
   );
-}
+};
 
-export default Home
+export default Home;

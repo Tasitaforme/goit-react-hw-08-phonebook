@@ -6,7 +6,7 @@ const initialState = {
   token: '',
   isLoading: false,
   error: '',
-  profile: null,
+  profile: {},
 };
 
 const handlePending = state => {
@@ -41,8 +41,14 @@ const authSlice = createSlice({
       .addCase(logOutThunk.fulfilled, () => initialState)
       .addCase(logOutThunk.rejected, handleRejected)
       .addCase(refreshThunk.pending, handlePending)
-      .addCase(refreshThunk.fulfilled, handleFulfilledSignUp)
-      .addCase(refreshThunk.rejected, () => initialState);
+      .addCase(refreshThunk.fulfilled, (state, { payload }) => {
+        state.profile.name = payload.name;
+        state.profile.email = payload.email;
+        state.token = payload.token;
+        state.isLoading = false;
+        state.error = '';
+      })
+      .addCase(refreshThunk.rejected, handleRejected);
       
   },
 });

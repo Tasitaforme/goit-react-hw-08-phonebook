@@ -7,7 +7,7 @@ import {
   FormikStyledField,
   FormikStyledForm,
   FormLink,
-} from '../../StyledComponents/Formik.styled';
+} from '../../components/StyledComponents/Formik.styled';
 import {
   Container,
   Message,
