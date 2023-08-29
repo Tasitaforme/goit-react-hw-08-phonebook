@@ -7,8 +7,9 @@ export const HeaderWrap = styled.div`
   font-weight: bold;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-bottom: 20px;
   gap: 16px;
 
@@ -19,6 +20,8 @@ export const HeaderWrap = styled.div`
 
 export const HeaderNavWrap = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
   gap: 16px;
 `;
