@@ -13,7 +13,7 @@ export const ListItem = styled.li`
   font-size: 18px;
   padding: 0 30px 16px;
 
-  @media screen and (min-width: 470px) {
+  @media screen and (min-width: 500px) {
     flex-direction: row;
     align-items: baseline;
     gap: 16px;
