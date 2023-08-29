@@ -35,7 +35,11 @@ function SharedLayout() {
     }
     refresh();
   }, [dispatch, isAuth, localToken]);
-
+  
+  useEffect(() => {
+    isAuth && dispatch(fetchContacts());
+  }, [isAuth, dispatch]);
+  
   return (
     <>
       <Header />
