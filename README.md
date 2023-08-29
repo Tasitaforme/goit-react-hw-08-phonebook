@@ -1,4 +1,4 @@
-<!-- ![preview-hw](/preview.jpg)-->
+![preview-hw](/preview.jpg)
 
 ## Критерії приймання ДЗ
 
